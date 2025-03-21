@@ -1,19 +1,19 @@
 /* Modern Design System */
 :root {
-    /* Light Theme (default) */
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --primary-light: #60a5fa;
-    --secondary: #0f172a;
-    --accent: #f97316;
-    --text: #1e293b;
-    --text-light: #64748b;
-    --background: #ffffff;
-    --background-dark: #0f172a;
-    --border: #e2e8f0;
-    --success: #22c55e;
-    --warning: #eab308;
-    --error: #ef4444;
+    /* Dark Theme (default) */
+    --primary: #60a5fa;
+    --primary-dark: #3b82f6;
+    --primary-light: #93c5fd;
+    --secondary: #e2e8f0;
+    --accent: #fb923c;
+    --text: #f1f5f9;
+    --text-light: #cbd5e1;
+    --background: #0f172a;
+    --background-dark: #1e293b;
+    --border: #334155;
+    --success: #4ade80;
+    --warning: #facc15;
+    --error: #f87171;
     
     /* Typography */
     --font-primary: 'Inter', sans-serif;
@@ -36,21 +36,21 @@
     --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark Theme */
-[data-theme="dark"] {
-    --primary: #60a5fa;
-    --primary-dark: #3b82f6;
-    --primary-light: #93c5fd;
-    --secondary: #e2e8f0;
-    --accent: #fb923c;
-    --text: #f1f5f9;
-    --text-light: #cbd5e1;
-    --background: #0f172a;
-    --background-dark: #1e293b;
-    --border: #334155;
-    --success: #4ade80;
-    --warning: #facc15;
-    --error: #f87171;
+/* Light Theme */
+[data-theme="light"] {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #60a5fa;
+    --secondary: #0f172a;
+    --accent: #f97316;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --background: #ffffff;
+    --background-dark: #0f172a;
+    --border: #e2e8f0;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
 }
 
 /* Reset & Base Styles */
