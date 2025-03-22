@@ -297,4 +297,65 @@ window.addEventListener('load', () => {
         }
     `;
     document.head.appendChild(style);
+});
+
+// Contact Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+
+    // Check if EmailJS is properly initialized
+    if (typeof emailjs === 'undefined') {
+        console.error('EmailJS is not loaded. Please check your script tags.');
+        return;
+    }
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Show loading state
+        submitBtn.classList.add('loading');
+        formStatus.className = 'form-status loading';
+        formStatus.textContent = 'Sending message...';
+
+        // Get form data
+        const formData = {
+            user_name: document.getElementById('name').value,
+            user_email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+
+        // Validate form data
+        if (!formData.user_name || !formData.user_email || !formData.subject || !formData.message) {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = 'Please fill in all fields.';
+            submitBtn.classList.remove('loading');
+            return;
+        }
+
+        // Send email using EmailJS
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+            .then(function(response) {
+                // Show success message
+                formStatus.className = 'form-status success';
+                formStatus.textContent = 'Message sent successfully!';
+                contactForm.reset();
+            }, function(error) {
+                // Show detailed error message
+                console.error('EmailJS Error:', error);
+                formStatus.className = 'form-status error';
+                formStatus.textContent = `Failed to send message: ${error.text || 'Please check your EmailJS configuration.'}`;
+            })
+            .finally(function() {
+                // Remove loading state
+                submitBtn.classList.remove('loading');
+                
+                // Hide status message after 5 seconds
+                setTimeout(() => {
+                    formStatus.className = 'form-status';
+                }, 5000);
+            });
+    });
 }); 
